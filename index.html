@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ms"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>e-FAIL PENGURUSAN PRASEKOLAH DAHLIA</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#30416a; --deep:#23365e; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; width:100%; font-family:"DM Sans",sans-serif; color:var(--ink); }
+    .site-shell { width:100%; min-height:100%; overflow:hidden; position:relative; background:radial-gradient(circle at 6% 10%,#f8dafa 0,transparent 28%),radial-gradient(circle at 94% 10%,#d9efff 0,transparent 30%),radial-gradient(circle at 10% 72%,#dcf8ea 0,transparent 28%),radial-gradient(circle at 89% 84%,#fff1c8 0,transparent 30%),#fffaf6; }
+    .site-shell:before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.26; background-image:radial-gradient(#ae9bd1 1px,transparent 1px); background-size:27px 27px; mask-image:linear-gradient(transparent,#000 18%,#000 88%,transparent); }
+    .page-inner { max-width:1320px; margin:auto; padding:28px clamp(18px,4vw,60px) 0; position:relative; }
+    .hero { position:relative; isolation:isolate; min-height:520px; border:2px solid rgba(255,255,255,.88); border-radius:42px; background:linear-gradient(116deg,#fff4fa 3%,#f3ebff 39%,#e6f6ff 76%,#e6faef 100%); box-shadow:0 22px 58px #79649b1b, inset 0 1px 0 #fff; overflow:hidden; display:grid; grid-template-columns:1.08fr .92fr; align-items:center; padding:42px clamp(28px,5vw,72px); gap:10px; }
+    .hero:before,.hero:after { content:""; position:absolute; border-radius:50%; z-index:-1; }
+    .hero:before { width:410px;height:410px;right:-85px;top:-155px;background:#ffffff70; }
+    .hero:after { width:280px;height:280px;left:32%;bottom:-230px;background:#ffdcda8c; }
+    .logo-space { width:174px;height:174px;aspect-ratio:1 / 1;border-radius:22px;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;background:#ffffffa8;color:#675987;font-size:13px;font-weight:700;margin-bottom:26px;object-fit:contain; }
+    .hero h1 { font-family:"Fraunces",serif;font-size:clamp(36px,4.25vw,65px);line-height:1.09;letter-spacing:-.04em;margin:24px 0 15px;max-width:690px;color:var(--deep);text-wrap:balance; }
+    .school { font-size:clamp(18px,2vw,25px);font-weight:800;letter-spacing:.14em;margin:0;color:#785c9a; }
+    .welcome { font-size:clamp(16px,1.5vw,19px);line-height:1.6;margin:22px 0 0;max-width:510px;font-weight:600;color:#536184; }
+    .hero-art { width:100%;max-width:540px;justify-self:center;filter:drop-shadow(0 20px 15px #69528526);animation:float 6s ease-in-out infinite; }
+    .hero-art svg { width:100%;height:auto;display:block; }
+    .spark { position:absolute;font-size:28px;pointer-events:none; }
+    .spark.one { right:49%;top:48px;color:#f2ad78;transform:rotate(17deg); }
+    .spark.two { right:28px;bottom:28px;color:#a89ae1;transform:rotate(-15deg); }
+    .section-heading { display:flex;align-items:end;justify-content:space-between;gap:20px;margin:58px 4px 25px; }
+    .section-heading h2 { font-family:"Fraunces",serif;font-size:clamp(29px,3vw,41px);letter-spacing:-.035em;margin:0;color:var(--deep); }
+    .section-heading p { margin:7px 0 0;font-weight:600;color:#697291; }
+    .heading-decoration { font-size:34px;letter-spacing:8px;white-space:nowrap; }
+    .dashboard-grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px; }
+    .section-card { --a:#f7e6ff;--b:#edddff;--accent:#a97bc7; appearance:none;border:2px solid #ffffff;width:100%;min-height:225px;position:relative;overflow:hidden;border-radius:28px;padding:20px 17px 17px;background:linear-gradient(145deg,var(--a),var(--b));box-shadow:0 10px 25px #54517314,0 3px 0 #ffffffa8 inset;cursor:pointer;text-align:left;display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s ease,box-shadow .25s ease; }
+    .section-card:hover { transform:translateY(-7px);box-shadow:0 20px 32px #54517325,0 3px 0 #ffffffa8 inset; }
+    .section-card:active { transform:translateY(-2px); }
+    .section-card:focus-visible,.close-feedback:focus-visible { outline:4px solid #354caa;outline-offset:4px; }
+    .section-card:before { content:"";position:absolute;width:155px;height:155px;border-radius:50%;background:#ffffff68;right:-36px;top:-49px; }
+    .section-card:after { content:"✦";position:absolute;right:25px;top:21px;color:var(--accent);font-size:19px;opacity:.72; }
+    .card-art { position:relative;height:128px;display:flex;align-items:center;justify-content:center;z-index:1; }
+    .card-art:before { content:"";position:absolute;width:120px;height:94px;border-radius:50%;background:#ffffff9e;filter:blur(1px);bottom:3px; }
+    .card-art .main-icon { position:relative;font-size:77px;line-height:1;filter:drop-shadow(0 9px 4px #615d8026);transition:transform .3s ease; }
+    .section-card:hover .main-icon { transform:rotate(-8deg) scale(1.1); }
+    .mini-icon { position:absolute;font-size:30px;right:16%;top:11px;transform:rotate(15deg);filter:drop-shadow(0 3px 2px #615d8025); }
+    .section-card:nth-child(3n+2) .mini-icon { right:auto;left:15%;transform:rotate(-16deg); }
+    .card-label { display:flex;align-items:center;justify-content:space-between;gap:7px;position:relative;z-index:1;border-radius:15px;padding:13px 14px;background:#ffffffdf;color:var(--deep);font-weight:800;font-size:16px;line-height:1.3;min-height:55px;box-shadow:0 4px 12px #5d577317; }
+    .card-label span:last-child { font-size:21px;color:var(--accent);flex:none; }
+    .section-card:nth-child(1) { --a:#eedfff;--b:#f8e7fb;--accent:#9b68c7; }
+    .section-card:nth-child(2) { --a:#dceeff;--b:#e8e8ff;--accent:#678add; }
+    .section-card:nth-child(3) { --a:#ffdfeb;--b:#ffeaf3;--accent:#dc7c9e; }
+    .section-card:nth-child(4) { --a:#fff0d7;--b:#ffe4d8;--accent:#da965d; }
+    .section-card:nth-child(5) { --a:#d9f4e6;--b:#e7f8e5;--accent:#62ac85; }
+    .section-card:nth-child(6) { --a:#e2e8ff;--b:#e9f2ff;--accent:#7489d6; }
+    .section-card:nth-child(7) { --a:#fff0d1;--b:#fff5df;--accent:#d5a354; }
+    .section-card:nth-child(8) { --a:#e4f7f0;--b:#ddf1f9;--accent:#5aa6a7; }
+    .section-card:nth-child(9) { --a:#f2e2fa;--b:#fce9f2;--accent:#b47ab5; }
+    .section-card:nth-child(10) { --a:#ffe6de;--b:#fff0e6;--accent:#da9078; }
+    .section-card:nth-child(11) { --a:#dff2ff;--b:#e2f6f6;--accent:#5e9dbc; }
+    .section-card:nth-child(12) { --a:#f8ebd9;--b:#f6e5f1;--accent:#b9879f; }
+    footer { text-align:center;padding:46px 20px 32px;color:#67718b;font-weight:700;font-size:14px; }
+    .feedback { position:fixed;z-index:20;right:24px;bottom:24px;max-width:min(410px,calc(100% - 32px));width:100%;background:#fff;border:2px solid #dfd7fa;border-radius:22px;padding:18px 50px 18px 20px;box-shadow:0 18px 55px #2a345138;transform:translateY(15px);opacity:0;pointer-events:none;transition:transform .25s,opacity .25s; }
+    .feedback.visible { transform:translateY(0);opacity:1;pointer-events:auto; }
+    .feedback strong { color:var(--deep);display:block;font-size:17px; }
+    .feedback p { margin:4px 0 0;color:#536184;font-size:14px; }
+    .close-feedback { position:absolute;top:12px;right:12px;border:0;background:#f1ecfa;border-radius:10px;width:32px;height:32px;color:#405176;font-size:22px;cursor:pointer;line-height:1; }
+    @keyframes float { 50% { transform:translateY(-9px); } }
+    @media(max-width:1050px) { .hero { min-height:440px;padding:35px; }.dashboard-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.hero h1 { font-size:clamp(33px,4vw,48px); } }
+    @media(max-width:690px) { .page-inner { padding:16px 16px 0; }.hero { grid-template-columns:1fr;padding:25px 24px 10px;border-radius:29px;gap:0; }.logo-space { width:160px;height:160px;aspect-ratio:1 / 1;margin-bottom:22px; }.hero-art { max-width:380px;margin-top:-12px; }.spark.one { right:24px;top:35px; }.section-heading { margin-top:40px; }.heading-decoration { font-size:23px;letter-spacing:2px; }.dashboard-grid { gap:14px; }.section-card { min-height:205px; }.card-label { font-size:14px; } }
+    @media(max-width:520px) { .dashboard-grid { grid-template-columns:1fr; }.section-card { min-height:185px;flex-direction:row;align-items:center;gap:10px;padding:15px; }.card-art { width:105px;height:105px;flex:none; }.card-art:before { width:95px;height:80px; }.card-art .main-icon { font-size:62px; }.mini-icon { font-size:24px;right:0; }.card-label { flex:1;min-height:68px;font-size:16px; }.section-heading { align-items:center; }.heading-decoration { font-size:19px; }.hero h1 { font-size:36px; } }
+    @media(prefers-reduced-motion:reduce) { *,*:before,*:after { animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important; } }
+  </style>
+ </head>
+ <body style="background: rgb(255, 250, 246);">
+  <div class="site-shell">
+   <div class="page-inner">
+    <header class="hero">
+     <div>
+      <img class="logo-space" loading="lazy" src="assets/logo.jpeg" alt="Logo SK Batu Lintang">
+      <h1 style="color: rgb(35, 54, 94); font-weight: 800; font-size: 32px;">e-FAIL PENGURUSAN PRASEKOLAH DAHLIA</h1>
+      <p class="school" style="color: rgb(120, 92, 154); font-weight: 800; font-size: 25px;">SK BATU LINTANG</p>
+      <p class="welcome" style="color: rgb(83, 97, 132); font-weight: 600; font-size: 19px;">Selamat Datang ke e-Fail Pengurusan Prasekolah Dahlia</p>
+     </div>
+     <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 570 485" xmlns="http://www.w3.org/2000/svg"><defs>
+        <linearGradient id="puddle" x2="1" y2="1">
+         <stop stop-color="#ffe3bd"></stop>
+         <stop offset="1" stop-color="#ffcfe3"></stop>
+        </linearGradient>
+        <linearGradient id="book" x2="0" y2="1">
+         <stop stop-color="#fff8dd"></stop>
+         <stop offset="1" stop-color="#ffd777"></stop>
+        </linearGradient>
+       </defs> <ellipse cx="282" cy="432" rx="225" ry="34" fill="#8c83b1" opacity=".13"></ellipse> <path d="M81 330a205 205 0 0 1 406 0" fill="none" stroke="#f1bad7" stroke-width="17" stroke-linecap="round" opacity=".65"></path> <path d="M105 330a181 181 0 0 1 358 0" fill="none" stroke="#ffe2a9" stroke-width="16" stroke-linecap="round" opacity=".75"></path> <path d="M129 330a157 157 0 0 1 310 0" fill="none" stroke="#afe6d2" stroke-width="15" stroke-linecap="round" opacity=".8"></path> <g transform="translate(40 103) rotate(-16 42 42)">
+        <rect x="10" y="9" width="79" height="68" rx="14" fill="#fff" stroke="#eac4da" stroke-width="5"></rect>
+        <rect x="19" y="18" width="61" height="50" rx="8" fill="#ffdde9"></rect>
+        <circle cx="51" cy="43" r="16" fill="#ffc374"></circle>
+        <circle cx="51" cy="43" r="8" fill="#fff0a1"></circle>
+       </g> <g transform="translate(428 80) rotate(13 30 45)">
+        <rect x="0" y="0" width="76" height="98" rx="9" fill="#9edcd2"></rect>
+        <rect x="9" y="10" width="58" height="77" rx="5" fill="#fff9e9"></rect>
+        <path d="M21 35h35M21 48h35M21 61h23" stroke="#8bc9bb" stroke-width="6" stroke-linecap="round"></path>
+       </g> <g transform="translate(61 319) rotate(-22)">
+        <rect x="0" y="0" width="19" height="94" rx="6" fill="#f7a8a9"></rect>
+        <path d="M0 18h19" stroke="#d47b83" stroke-width="4"></path>
+        <path d="M1 0 9.5-20 18 0" fill="#f4d2ab"></path>
+        <path d="m6-13 3.5-8 3.5 8" fill="#544b69"></path>
+       </g> <g transform="translate(476 306) rotate(22)">
+        <rect x="0" y="0" width="18" height="97" rx="6" fill="#a99ee7"></rect>
+        <path d="M0 18h18" stroke="#7e77b9" stroke-width="4"></path>
+        <path d="M0 0 9-20 18 0" fill="#f4d2ab"></path>
+        <path d="m5-13 4-8 4 8" fill="#544b69"></path>
+       </g> <circle cx="120" cy="219" r="9" fill="#f5bd6c"></circle><circle cx="453" cy="210" r="7" fill="#b5a2e6"></circle> <path d="m310 31 7 16 17 6-17 7-7 17-7-17-17-7 17-6z" fill="#ffd082"></path> <path d="m516 239 5 11 11 5-11 5-5 11-5-11-11-5 11-5z" fill="#f4add0"></path> <g transform="translate(111 154)">
+        <ellipse cx="84" cy="258" rx="72" ry="15" fill="#9a7893" opacity=".17"></ellipse>
+        <path d="M45 157q-38 17-32 101h144q7-87-43-103z" fill="#f9a5b7"></path>
+        <path d="M39 249h43v19H37zM111 249h42v19h-42z" fill="#554e75"></path>
+        <path d="M50 172q-30 3-35 51" fill="none" stroke="#e9a57e" stroke-width="23" stroke-linecap="round"></path>
+        <path d="M125 170q35 3 39 52" fill="none" stroke="#e9a57e" stroke-width="23" stroke-linecap="round"></path>
+        <circle cx="84" cy="101" r="66" fill="#edb487"></circle>
+        <path d="M18 101Q7 17 84 17q81 0 69 87-13-14-17-43-32 20-89 11-7 23-29 29" fill="#51465c"></path>
+        <circle cx="58" cy="109" r="4" fill="#3e3548"></circle>
+        <circle cx="107" cy="109" r="4" fill="#3e3548"></circle>
+        <path d="M72 132q11 10 23 0" fill="none" stroke="#9a5f66" stroke-width="4" stroke-linecap="round"></path>
+        <ellipse cx="48" cy="124" rx="11" ry="5" fill="#eb8594" opacity=".6"></ellipse>
+        <ellipse cx="118" cy="124" rx="11" ry="5" fill="#eb8594" opacity=".6"></ellipse>
+        <path d="M19 80Q-6 91 1 119" fill="none" stroke="#51465c" stroke-width="17" stroke-linecap="round"></path>
+        <path d="M150 81q33 8 20 41" fill="none" stroke="#51465c" stroke-width="17" stroke-linecap="round"></path>
+        <path d="m56 26 24-14 26 18-26 11z" fill="#fbc563"></path>
+       </g> <g transform="translate(297 163)">
+        <ellipse cx="77" cy="250" rx="68" ry="15" fill="#9a7893" opacity=".17"></ellipse>
+        <path d="M37 154q-38 16-35 91h153q2-75-43-91z" fill="#88cbbd"></path>
+        <path d="M22 238h46v22H22zM94 238h48v22H94z" fill="#554e75"></path>
+        <path d="M28 170q-29 8-33 53" fill="none" stroke="#c98f68" stroke-width="22" stroke-linecap="round"></path>
+        <path d="M123 168q29 7 35 55" fill="none" stroke="#c98f68" stroke-width="22" stroke-linecap="round"></path>
+        <circle cx="79" cy="96" r="64" fill="#d7a17a"></circle>
+        <path d="M17 95Q4 13 79 16q79 0 63 92-14-15-17-37-56-3-82-22-3 32-26 46" fill="#51435a"></path>
+        <circle cx="55" cy="105" r="4" fill="#392f41"></circle>
+        <circle cx="100" cy="105" r="4" fill="#392f41"></circle>
+        <path d="M68 126q11 9 21 0" fill="none" stroke="#915c61" stroke-width="4" stroke-linecap="round"></path>
+        <ellipse cx="46" cy="120" rx="10" ry="5" fill="#e98482" opacity=".52"></ellipse>
+        <ellipse cx="111" cy="120" rx="10" ry="5" fill="#e98482" opacity=".52"></ellipse>
+        <path d="M30 31q50-49 99 8" fill="none" stroke="#51435a" stroke-width="18" stroke-linecap="round"></path>
+       </g> <g transform="translate(191 337)">
+        <path d="M0 8q51-25 94 9v72q-43-29-94-8z" fill="url(#book)" stroke="#e5ad6e" stroke-width="5"></path>
+        <path d="M94 17q47-34 94-9v73q-48-21-94 8z" fill="#fff7e4" stroke="#e5ad6e" stroke-width="5"></path>
+        <path d="M94 17v72" stroke="#d39970" stroke-width="5"></path>
+        <path d="M20 35q22-7 47 7M20 54q22-7 47 6M119 40q22-11 47-6M119 59q22-11 47-6" fill="none" stroke="#e0b681" stroke-width="5" stroke-linecap="round"></path>
+       </g> <g transform="translate(413 371)">
+        <rect x="0" y="24" width="58" height="43" rx="6" fill="#ffbb8d"></rect>
+        <rect x="12" y="0" width="51" height="43" rx="6" fill="#aed9fb"></rect>
+        <circle cx="37" cy="22" r="8" fill="#fff6d8"></circle>
+       </g> <g transform="translate(50 397)">
+        <circle cx="15" cy="13" r="14" fill="#ffc969"></circle>
+        <circle cx="36" cy="13" r="14" fill="#ffc969"></circle>
+        <circle cx="25" cy="31" r="14" fill="#ffc969"></circle>
+        <circle cx="25" cy="20" r="9" fill="#fff3af"></circle>
+       </g>
+      </svg>
+     </div><span class="spark one" aria-hidden="true">✳</span><span class="spark two" aria-hidden="true">✦</span>
+    </header>
+    <main>
+     <section aria-labelledby="section-title">
+      <div class="section-heading">
+       <div>
+        <h2 id="section-title" style="color: rgb(35, 54, 94); font-weight: 800; font-size: 24px;">Jelajah e-Fail</h2>
+        <p style="color: rgb(105, 114, 145); font-weight: 600; font-size: 16px;">Pilih bahagian yang ingin anda terokai.</p>
+       </div>
+       <div class="heading-decoration" aria-hidden="true">
+        ✿ ✦
+       </div>
+      </div>
+      <div id="section-grid" class="dashboard-grid">
+       <button type="button" class="section-card" data-section="0" aria-label="Buka bahagian Takwim Prasekolah"><span class="card-art" aria-hidden="true"><span class="main-icon">🗓️</span><span class="mini-icon">✏️</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">Takwim Prasekolah</span><span aria-hidden="true">↗</span></span></button>
+       <button type="button" class="section-card" data-section="1" aria-label="Buka bahagian Senarai Nama Murid"><span class="card-art" aria-hidden="true"><span class="main-icon">🧒🏽</span><span class="mini-icon">📋</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">Senarai Nama Murid</span><span aria-hidden="true">↗</span></span></button>
+       <button type="button" class="section-card" data-section="2" aria-label="Buka bahagian Koleksi Gambar"><span class="card-art" aria-hidden="true"><span class="main-icon">📷</span><span class="mini-icon">🌼</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">Koleksi Gambar</span><span aria-hidden="true">↗</span></span></button>
+       <button type="button" class="section-card" data-section="3" aria-label="Buka bahagian OPR Aktiviti"><span class="card-art" aria-hidden="true"><span class="main-icon">🎨</span><span class="mini-icon">📄</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">OPR Aktiviti</span><span aria-hidden="true">↗</span></span></button>
+       <button type="button" class="section-card" data-section="4" aria-label="Buka bahagian BMI 5-6 Tahun"><span class="card-art" aria-hidden="true"><span class="main-icon">📏</span><span class="mini-icon">⚖️</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">BMI 5-6 Tahun</span><span aria-hidden="true">↗</span></span></button>
+       <button type="button" class="section-card" data-section="5" aria-label="Buka bahagian Surat-Menyurat"><span class="card-art" aria-hidden="true"><span class="main-icon">💌</span><span class="mini-icon">📑</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">Surat-Menyurat</span><span aria-hidden="true">↗</span></span></button>
+       <button type="button" class="section-card" data-section="6" aria-label="Buka bahagian Bahan Kursus / Bengkel"><span class="card-art" aria-hidden="true"><span class="main-icon">📚</span><span class="mini-icon">🖍️</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">Bahan Kursus / Bengkel</span><span aria-hidden="true">↗</span></span></button>
+       <button type="button" class="section-card" data-section="7" aria-label="Buka bahagian SKPK"><span class="card-art" aria-hidden="true"><span class="main-icon">✅</span><span class="mini-icon">📋</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">SKPK</span><span aria-hidden="true">↗</span></span></button>
+       <button type="button" class="section-card" data-section="8" aria-label="Buka bahagian IPPK"><span class="card-art" aria-hidden="true"><span class="main-icon">📝</span><span class="mini-icon">⭐</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">IPPK</span><span aria-hidden="true">↗</span></span></button>
+       <button type="button" class="section-card" data-section="9" aria-label="Buka bahagian GTK"><span class="card-art" aria-hidden="true"><span class="main-icon">👩‍🏫</span><span class="mini-icon">📖</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">GTK</span><span aria-hidden="true">↗</span></span></button>
+       <button type="button" class="section-card" data-section="10" aria-label="Buka bahagian Laporan Perbelanjaan"><span class="card-art" aria-hidden="true"><span class="main-icon">🧮</span><span class="mini-icon">🧾</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">Laporan Perbelanjaan</span><span aria-hidden="true">↗</span></span></button>
+       <button type="button" class="section-card" data-section="11" aria-label="Buka bahagian Pelbagai Borang"><span class="card-art" aria-hidden="true"><span class="main-icon">📂</span><span class="mini-icon">✏️</span></span><span class="card-label"><span style="color: rgb(35, 54, 94); font-weight: 800; font-size: 16px;">Pelbagai Borang</span><span aria-hidden="true">↗</span></span></button>
+      </div>
+     </section>
+    </main>
+    <footer>
+     <span style="color: rgb(103, 113, 139); font-weight: 700; font-size: 14px;">© 2026 Prasekolah Dahlia | SK Batu Lintang</span>
+    </footer>
+   </div>
+  </div>
+  <aside id="feedback" class="feedback" role="status" aria-live="polite" aria-atomic="true"><strong id="selected-section"></strong>
+   <p style="color: rgb(83, 97, 132); font-weight: 400; font-size: 14px;">Bahagian ini sedia untuk dibuka.</p><button id="close-feedback" class="close-feedback" type="button" aria-label="Tutup pemberitahuan">×</button>
+  </aside>
+  <script>
+    const sectionNames = [
+      "Takwim Prasekolah", "Senarai Nama Murid", "Koleksi Gambar",
+      "OPR Aktiviti", "BMI 5-6 Tahun", "Surat-Menyurat",
+      "Bahan Kursus / Bengkel", "SKPK", "IPPK", "GTK",
+      "Laporan Perbelanjaan", "Pelbagai Borang"
+    ];
+    const sectionLinks = [
+      "", "", "", "", "", "", "", "", "", "", "", ""
+    ];
+    const feedback = document.getElementById("feedback");
+    const selectedSection = document.getElementById("selected-section");
+    let hideTimer;
+    function closeFeedback() {
+      feedback.classList.remove("visible");
+      clearTimeout(hideTimer);
+    }
+    document.querySelectorAll(".section-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const idx = Number(card.dataset.section);
+        const url = sectionLinks[idx];
+        if (url) {
+          window.open(url, "_blank", "noopener");
+          return;
+        }
+        selectedSection.textContent = sectionNames[idx];
+        feedback.classList.add("visible");
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(closeFeedback, 5000);
+      });
+    });
+    document.getElementById("close-feedback").addEventListener("click", closeFeedback);
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeFeedback();
+    });
+  </script>
+</body></html>
